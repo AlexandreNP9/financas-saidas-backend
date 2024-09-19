@@ -35,7 +35,6 @@ CREATE TABLE IF NOT EXISTS Comprovante (
 -- Tabela de Saídas
 CREATE TABLE IF NOT EXISTS Saida (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    numero_referencia INT NOT NULL UNIQUE, -- número de referência gerado programaticamente, deve ser único
     beneficiario_id INT,
     descricao TEXT NOT NULL,
     valor_total DECIMAL(10, 2) NOT NULL,

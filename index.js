@@ -1,6 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const models = require('./models');
+const beneficiarioRoutes = require('./routes/beneficiario');
+const categoriaSaidaRoutes = require('./routes/categoriaSaida');
+// Outras rotas...
 
 const app = express();
 app.use(bodyParser.json());
@@ -14,22 +17,10 @@ models.sequelize.authenticate()
     console.error('Erro ao conectar ao banco de dados:', err);
   });
 
-// Rota para cadastrar uma nova saída
-app.post('/saida', async (req, res) => {
-  try {
-    const { descricao, valor_total, beneficiario_id, categoria_id, comprovante_id } = req.body;
-    const saida = await models.Saida.create({
-      descricao,
-      valor_total,
-      beneficiario_id,
-      categoria_id,
-      comprovante_id
-    });
-    res.status(201).json(saida);
-  } catch (error) {
-    res.status(500).json({ error: 'Erro ao cadastrar saída' });
-  }
-});
+// Usar as rotas criadas
+app.use('/beneficiarios', beneficiarioRoutes);
+app.use('/categorias-saida', categoriaSaidaRoutes);
+// Outras rotas...
 
 // Iniciar servidor
 const PORT = process.env.PORT || 3000;
