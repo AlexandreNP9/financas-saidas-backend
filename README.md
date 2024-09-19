@@ -1,3 +1,8 @@
+# Copia e cola aqui, fofo
+npm install  
+npm install mysql2  
+npx nodemon index.js  
+
 # Finanças Saídas Backend
 
 Este é o backend para o sistema de gerenciamento de saídas financeiras. O projeto é construído utilizando Node.js e Sequelize para interação com o banco de dados MySQL.

@@ -8,9 +8,10 @@ module.exports = (sequelize, DataTypes) => {
     descricao: {
       type: DataTypes.STRING(100),
       allowNull: false,
-    }
+    },
   }, {
-    tableName: 'Emocao' // Nome da tabela ajustado
+    tableName: 'Emocao',
+    timestamps: false,
   });
 
   return Emocao;

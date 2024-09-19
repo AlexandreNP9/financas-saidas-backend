@@ -1,9 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const models = require('./models');
-const beneficiarioRoutes = require('./routes/beneficiario');
-const categoriaSaidaRoutes = require('./routes/categoriaSaida');
-// Outras rotas...
+const beneficiarioRoute = require('./routes/beneficiario');
+const categoriaItemRoute = require('./routes/categoriaItem');
+const categoriaSaidaRoute = require('./routes/categoriaSaida');
+const comprovanteRoute = require('./routes/comprovante');
+const emocaoRoute = require('./routes/emocao');
+const itemComprovanteRoute = require('./routes/itemComprovante');
+const saidaRoute = require('./routes/saida');
+const tipoComprovanteRoute = require('./routes/tipoComprovante');
 
 const app = express();
 app.use(bodyParser.json());
@@ -18,9 +23,14 @@ models.sequelize.authenticate()
   });
 
 // Usar as rotas criadas
-app.use('/beneficiarios', beneficiarioRoutes);
-app.use('/categorias-saida', categoriaSaidaRoutes);
-// Outras rotas...
+app.use('/beneficiario', beneficiarioRoute);
+app.use('/categoriaItem', categoriaItemRoute);
+app.use('/categoriaSaida', categoriaSaidaRoute);
+app.use('/comprovante', comprovanteRoute);
+app.use('/emocao', emocaoRoute);
+app.use('/itemComprovante', itemComprovanteRoute);
+app.use('/saida', saidaRoute);
+app.use('/tipoComprovante', tipoComprovanteRoute);
 
 // Iniciar servidor
 const PORT = process.env.PORT || 3000;

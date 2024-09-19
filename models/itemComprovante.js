@@ -33,32 +33,27 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       references: {
         model: 'CategoriaItem',
-        key: 'id'
-      }
+        key: 'id',
+      },
     },
     emocao_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'Emocao',
-        key: 'id'
-      }
+        key: 'id',
+      },
     },
     comprovante_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'Comprovante',
-        key: 'id'
-      }
-    }
+        key: 'id',
+      },
+    },
   }, {
-    tableName: 'ItemComprovante'
+    tableName: 'ItemComprovante',
+    timestamps: false,
   });
-
-  ItemComprovante.associate = function(models) {
-    ItemComprovante.belongsTo(models.CategoriaItem, { foreignKey: 'categoria_item_id' });
-    ItemComprovante.belongsTo(models.Emocao, { foreignKey: 'emocao_id' });
-    ItemComprovante.belongsTo(models.Comprovante, { foreignKey: 'comprovante_id' }); // Corrigido
-  };
 
   return ItemComprovante;
 };

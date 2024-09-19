@@ -6,28 +6,24 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
     },
     imagem: {
-      type: DataTypes.BLOB, // BYTEA para imagem
+      type: DataTypes.BLOB('long'),
       allowNull: true,
     },
     tipo_id: {
       type: DataTypes.INTEGER,
-      allowNull: false, // Marcar como obrigatório, se necessário
       references: {
         model: 'TipoComprovante',
-        key: 'id'
-      }
+        key: 'id',
+      },
     },
     numero_acesso: {
       type: DataTypes.STRING(50),
       allowNull: false,
-    }
+    },
   }, {
-    tableName: 'Comprovante'
+    tableName: 'Comprovante',
+    timestamps: false,
   });
-
-  Comprovante.associate = function(models) {
-    Comprovante.belongsTo(models.TipoComprovante, { foreignKey: 'tipo_id' });
-  };
 
   return Comprovante;
 };
